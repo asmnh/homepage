@@ -32,3 +32,5 @@ Nothing important requires JavaScript.
 Writing things down is useful.
 
 Publishing them somewhere crawlable is occasionally even more useful - Google is good backup tool, and it's free.
+
+Look how fast they grow - they even publish automatically!
