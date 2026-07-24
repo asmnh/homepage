@@ -1,20 +1,27 @@
 ---
-const title = "Asmo.dev";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<main>
-			<h1>{title}</h1>
-			<p>
-				Site construction has begun. Standards are their usual low.
-			</p>
-		</main>
-	</body>
-</html>
+<BaseLayout
+	title="Asmo.dev"
+	description="Articles, technical notes and project journals by Asmo."
+>
+	<h1>Asmo.dev</h1>
+
+	<p class="lead">
+		Articles, technical notes and project journals.
+	</p>
+
+	<p>
+		This is where I write down things that survived contact with software,
+		systems and occasionally people.
+	</p>
+
+	<h2>Sections</h2>
+
+	<ul>
+		<li><a href="/articles/">Articles</a> — longer, reasonably finished writing.</li>
+		<li><a href="/notes/">Notes</a> — shorter observations and working ideas.</li>
+		<li><a href="/projects/">Projects</a> — things being built, broken and explained.</li>
+	</ul>
+</BaseLayout>
