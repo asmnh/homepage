@@ -1,0 +1,64 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const notes = await getCollection("notes", ({ data }) => !data.draft);
+
+    return notes.map((note) => ({
+        params: {
+            id: note.id,
+        },
+        props: {
+            note,
+        },
+    }));
+}
+
+interface Props {
+    note: CollectionEntry<"notes">;
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+const published = note.data.published.toISOString().slice(0, 10);
+const updated = note.data.updated?.toISOString().slice(0, 10);
+---
+
+<BaseLayout
+    title={note.data.title}
+    description={note.data.description}
+    type="article"
+    published={note.data.published.toISOString()}
+    updated={note.data.updated?.toISOString()}
+>
+    <article class="prose">
+        <header class="content-header">
+            <h1>{note.data.title}</h1>
+
+            <p class="content-meta">
+                Published <time datetime={note.data.published.toISOString()}>
+                    {published}
+                </time>
+
+                {
+                    updated && note.data.updated && (
+                        <>
+                            {" · "}
+                            Updated{" "}
+                            <time datetime={note.data.updated.toISOString()}>
+                                {updated}
+                            </time>
+                        </>
+                    )
+                }
+            </p>
+
+            <p class="lead">{note.data.description}</p>
+        </header>
+
+        <Content />
+    </article>
+</BaseLayout>

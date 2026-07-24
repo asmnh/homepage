@@ -207,3 +207,58 @@ ol {
 	border-left: 0.25rem solid var(--border);
 	color: var(--muted);
 }
+
+.content-list {
+	display: grid;
+	gap: 2rem;
+	margin: 2rem 0;
+	padding: 0;
+	list-style: none;
+}
+
+.content-list > li {
+	padding-bottom: 2rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.content-list article > header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.content-list h2 {
+	margin: 0;
+}
+
+.content-list time,
+.content-meta,
+.project-status {
+	font-size: 0.875rem;
+	color: var(--muted-color);
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 1rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tag-list li {
+	padding: 0.15rem 0.5rem;
+	border: 1px solid var(--border-color);
+	border-radius: 999px;
+	font-size: 0.8rem;
+}
+
+.project-status {
+	text-transform: capitalize;
+}
+
+.project-links {
+	margin-top: 1rem;
+}

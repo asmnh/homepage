@@ -1,0 +1,86 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects", ({ data }) => !data.draft);
+
+    return projects.map((project) => ({
+        params: {
+            id: project.id,
+        },
+        props: {
+            project,
+        },
+    }));
+}
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const started = project.data.started?.toISOString().slice(0, 10);
+const updated = project.data.updated?.toISOString().slice(0, 10);
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+    <article class="prose">
+        <header class="content-header">
+            <h1>{project.data.title}</h1>
+
+            <p class="content-meta">
+                Status: <strong>{project.data.status}</strong>
+
+                {
+                    started && project.data.started && (
+                        <>
+                            {" · "}
+                            Started{" "}
+                            <time datetime={project.data.started.toISOString()}>
+                                {started}
+                            </time>
+                        </>
+                    )
+                }
+
+                {
+                    updated && project.data.updated && (
+                        <>
+                            {" · "}
+                            Updated{" "}
+                            <time datetime={project.data.updated.toISOString()}>
+                                {updated}
+                            </time>
+                        </>
+                    )
+                }
+            </p>
+
+            <p class="lead">{project.data.description}</p>
+
+            {
+                (project.data.repository || project.data.website) && (
+                    <p class="project-links">
+                        {project.data.repository && (
+                            <a href={project.data.repository}>Repository</a>
+                        )}
+
+                        {project.data.repository &&
+                            project.data.website &&
+                            " · "}
+
+                        {project.data.website && (
+                            <a href={project.data.website}>Website</a>
+                        )}
+                    </p>
+                )
+            }
+        </header>
+
+        <Content />
+    </article>
+</BaseLayout>

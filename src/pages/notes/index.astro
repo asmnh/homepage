@@ -1,12 +1,26 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import DatedContentList from "../../components/DatedContentList.astro";
+
+const notes = (await getCollection("notes"))
+	.filter((note) => !note.data.draft)
+	.sort(
+		(left, right) =>
+			right.data.published.valueOf() -
+			left.data.published.valueOf(),
+	);
 ---
 
 <BaseLayout
 	title="Notes"
-	description="Short technical notes by Asmo."
+	description="Shorter observations, fragments and working ideas."
 >
 	<h1>Notes</h1>
-	<p class="lead">Short observations, working ideas and useful fragments.</p>
-	<p>Nothing published yet.</p>
+
+	<p class="lead">
+		Shorter observations that deserve persistence without being inflated into articles.
+	</p>
+
+	<DatedContentList entries={notes} basePath="/notes" />
 </BaseLayout>

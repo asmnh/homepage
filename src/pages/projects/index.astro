@@ -1,12 +1,69 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects"))
+	.filter((project) => !project.data.draft)
+	.sort((left, right) => {
+		if (left.data.featured !== right.data.featured) {
+			return left.data.featured ? -1 : 1;
+		}
+
+		const leftDate =
+			left.data.updated?.valueOf() ??
+			left.data.started?.valueOf() ??
+			0;
+
+		const rightDate =
+			right.data.updated?.valueOf() ??
+			right.data.started?.valueOf() ??
+			0;
+
+		return rightDate - leftDate;
+	});
 ---
 
 <BaseLayout
 	title="Projects"
-	description="Software projects by Asmo."
+	description="Software projects, experiments and other controlled incidents."
 >
 	<h1>Projects</h1>
-	<p class="lead">Things being built, investigated or kept under observation.</p>
-	<p>Project records will appear here.</p>
+
+	<p class="lead">
+		Things I am building, maintaining, postponing or observing from a safe distance.
+	</p>
+
+	<ul class="content-list project-list">
+		{
+			projects.map((project) => (
+				<li>
+					<article>
+						<header>
+							<h2>
+								<a href={`/projects/${project.id}/`}>
+									{project.data.title}
+								</a>
+							</h2>
+
+							<span class="project-status">
+								{project.data.status}
+							</span>
+						</header>
+
+						<p>{project.data.description}</p>
+
+						{
+							project.data.tags.length > 0 && (
+								<ul class="tag-list" aria-label="Technologies">
+									{project.data.tags.map((tag) => (
+										<li>{tag}</li>
+									))}
+								</ul>
+							)
+						}
+					</article>
+				</li>
+			))
+		}
+	</ul>
 </BaseLayout>
