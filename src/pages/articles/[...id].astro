@@ -32,6 +32,9 @@ const published = article.data.published.toISOString().slice(0, 10);
 <BaseLayout
 	title={article.data.title}
 	description={article.data.description}
+	type="article"
+	published={article.data.published.toISOString()}
+	updated={article.data.updated?.toISOString()}
 >
 	<article class="prose">
 		<header class="article-header">
