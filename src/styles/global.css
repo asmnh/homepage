@@ -145,3 +145,65 @@ ol {
 		padding-top: 2rem;
 	}
 }
+
+.content-list {
+	display: grid;
+	gap: 2rem;
+	margin: 2.5rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.content-list h2 {
+	margin: 0;
+	font-size: 1.35rem;
+}
+
+.content-list p {
+	margin-block: 0.5rem;
+}
+
+.content-list time,
+.article-meta {
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.article-header {
+	margin-bottom: 3rem;
+}
+
+.article-header h1 {
+	margin-bottom: 1rem;
+}
+
+.article-meta {
+	margin-top: 1.5rem;
+}
+
+.prose :is(p, ul, ol) {
+	max-width: 70ch;
+}
+
+.prose pre {
+	overflow-x: auto;
+	padding: 1rem;
+	border: 1px solid var(--border);
+	border-radius: 0.4rem;
+	background: var(--surface);
+	line-height: 1.5;
+}
+
+.prose :not(pre) > code {
+	padding: 0.1em 0.3em;
+	border: 1px solid var(--border);
+	border-radius: 0.25rem;
+	background: var(--surface);
+}
+
+.prose blockquote {
+	margin-inline: 0;
+	padding-left: 1rem;
+	border-left: 0.25rem solid var(--border);
+	color: var(--muted);
+}
