@@ -2,16 +2,21 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
-	site: "https://asmo.dev",
-	integrations: [
-		sitemap({
-			namespaces: {
-				news: false,
-				xhtml: false,
-				image: false,
-				video: false,
-			},
-		}),
+  site: "https://asmo.dev",
+
+  integrations: [
+      sitemap({
+          namespaces: {
+              news: false,
+              xhtml: false,
+              image: false,
+              video: false,
+          },
+      }),
 	],
+
+  adapter: cloudflare(),
 });
