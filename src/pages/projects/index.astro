@@ -10,14 +10,10 @@ const projects = (await getCollection("projects"))
 		}
 
 		const leftDate =
-			left.data.updated?.valueOf() ??
-			left.data.started?.valueOf() ??
-			0;
+			left.data.updated?.valueOf() ?? left.data.started?.valueOf() ?? 0;
 
 		const rightDate =
-			right.data.updated?.valueOf() ??
-			right.data.started?.valueOf() ??
-			0;
+			right.data.updated?.valueOf() ?? right.data.started?.valueOf() ?? 0;
 
 		return rightDate - leftDate;
 	});
@@ -30,7 +26,8 @@ const projects = (await getCollection("projects"))
 	<h1>Projects</h1>
 
 	<p class="lead">
-		Things I am building, maintaining, postponing or observing from a safe distance.
+		Things I am building, maintaining, postponing or observing from a safe
+		distance.
 	</p>
 
 	<ul class="content-list project-list">
@@ -52,15 +49,13 @@ const projects = (await getCollection("projects"))
 
 						<p>{project.data.description}</p>
 
-						{
-							project.data.tags.length > 0 && (
-								<ul class="tag-list" aria-label="Technologies">
-									{project.data.tags.map((tag) => (
-										<li>{tag}</li>
-									))}
-								</ul>
-							)
-						}
+						{project.data.tags.length > 0 && (
+							<ul class="tag-list" aria-label="Technologies">
+								{project.data.tags.map((tag) => (
+									<li>{tag}</li>
+								))}
+							</ul>
+						)}
 					</article>
 				</li>
 			))

@@ -262,3 +262,8 @@ ol {
 .project-links {
 	margin-top: 1rem;
 }
+
+.prose a[href^="http"]::after {
+	content: " ↗";
+	font-size: 0.8em;
+}
