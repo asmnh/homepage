@@ -22,7 +22,7 @@ GPT'd into existence on a Friday night with a little too much Monster.
 
 ## TODO
 
-What is a project without an evergrowing backlog?
+What is a project without an ever-growing backlog?
 
 ### Near-ish future
 
@@ -34,7 +34,7 @@ What is a project without an evergrowing backlog?
 ### When I feel like it
 
 - [ ] Search (just use Google)
-- [ ] Better code blocks and syntax hilighting
+- [ ] Better code blocks and syntax highlighting
 - [ ] Article/note series, previous/next support
 - [ ] Reading time estimate
 
