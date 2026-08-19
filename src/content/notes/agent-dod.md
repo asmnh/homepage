@@ -7,7 +7,7 @@ tags:
 draft: false
 ---
 
-A trick that I learned doing some agentic coding is to have agent instructions ((https://agents.md/)[agents.md] etc) contain a section - preferably by the end - as a checklist of what needs to be met to consider a task done. It doesn't replace hooks and other hard validation, but helps a lot in keeping harness tight.
+A trick that I learned doing some agentic coding is to have agent instructions ([agents.md](https://agents.md/) etc) contain a section - preferably by the end - as a checklist of what needs to be met to consider a task done. It doesn't replace hooks and other hard validation, but helps a lot in keeping harness tight.
 
 DOD steps seem to work best when made declarative, and as a checklist. Example:
 
